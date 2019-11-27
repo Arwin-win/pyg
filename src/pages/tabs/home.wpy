@@ -1,0 +1,48 @@
+<template>
+  <view class="home">
+    <!-- 轮播图结构 -->
+    <swiper indicator-dots circular>
+      <swiper-item wx:for="{{swiperData}}" wx:key="index">
+        <navigator url="{{item.navigator_url}}">
+          <image src="{{item.image_src}}"></image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+    <!-- 分类的结构 -->
+    <view class="cate_box">
+      <navigator url="/pages/tabs/cates" open-type="switchTab" hover-class="none" wx:for="{{cateData}}" wx:key="index" >
+        <image src="{{item.image_src}}"></image>
+      </navigator>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import mixHome from '../../mixins/tabs/home.js';
+export default class home extends wepy.page {
+  mixins = [mixHome]
+}
+</script>
+
+<style lang='less'>
+swiper{
+  height: 350rpx;
+  navigator,image{
+    width: 100%;
+    height: 100%;
+  }
+}
+.cate_box{
+  display: flex;
+  padding: 20rpx 0;
+  navigator{
+    width: 25%;
+    text-align: center;
+    image{
+      width: 128rpx;
+      height: 140rpx;
+    }
+  }
+}
+</style>
